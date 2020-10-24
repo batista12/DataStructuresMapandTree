@@ -7,12 +7,11 @@ import java.util.LinkedHashMap;
 import org.junit.Test;
 
 public class LinkedHashMapTest {
+	String sentence;
+	LinkedHashMap<String, Integer> LinkedHashMap;
 
 	@Test
 	public void givenASentence_WhenWordsAddedToList_ShouldReturnParanoidFrequency() {
-		String sentence = "Paranoids are not paranoid because they are paranoid but because they keep putting "
-				+ "themselves deliberately into paranoid avoidable situations";
-		LinkedHashMap<String, Integer> LinkedHashMap = new LinkedHashMap<>();
 		String words[] = sentence.toLowerCase().split(" ");
 		for (String word : words) {
 			Integer value = LinkedHashMap.get(word);
@@ -23,7 +22,24 @@ public class LinkedHashMapTest {
 			LinkedHashMap.add(word, value);
 		}
 		System.out.println(LinkedHashMap);
-		int frequency = LinkedHashMap.get("paranoid");
+		int frequency = (int) LinkedHashMap.get("paranoid");
 		assertEquals(3, frequency);
 	}
+
+	@Test
+	public void shouldRemoveThatKey() {
+		String words[] = sentence.toLowerCase().split(" ");
+		for (String word : words) {
+			Integer value = LinkedHashMap.get(word);
+			if (value == null)
+				value = 1;
+			else
+				value = value + 1;
+			LinkedHashMap.add(word, value);
+		}
+		MapNode<String, Integer> MapNode = (MapNode<String, Integer>) LinkedHashMap.remove("avoidable");
+		System.out.println(LinkedHashMap);
+		assertEquals(MapNode.getNext().getKey(), null);
+	}
 }
+
