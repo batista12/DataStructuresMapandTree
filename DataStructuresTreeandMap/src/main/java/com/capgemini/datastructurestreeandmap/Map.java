@@ -7,21 +7,21 @@ public class Map<K extends Comparable<K>, V extends Comparable<V>> {
 	}
 
 	public V get(K key) {
-		MyMapNode<K, V> myMapNode = (MyMapNode<K, V>) this.LinkedList.search(key);
-		return (myMapNode == null) ? null : myMapNode.getValue();
+		MapNode<K, V> MapNode = (MapNode<K, V>) this.LinkedList.search(key);
+		return (MapNode == null) ? null : MapNode.getValue();
 	}
 
 	public void add(K key, V value) {
-		MyMapNode<K, V> myMapNode = (MyMapNode<K, V>) this.LinkedList.search(key);
-		if (myMapNode == null) {
-			myMapNode = new MyMapNode<>(key, value);
-			this.LinkedList.append(myMapNode);
+		MapNode<K, V> MapNode = (MapNode<K, V>) this.LinkedList.search(key);
+		if (MapNode == null) {
+			MapNode = new MapNode<>(key, value);
+			this.LinkedList.append(MapNode);
 		} else
-			myMapNode.setValue(value);
+			MapNode.setValue(value);
 	}
 
 	@Override
 	public String toString() {
-		return "MyHashMapNodes{" + LinkedList + '}';
+		return "MyHashMapNodes{" + LinkedList  + '}';
 	}
 }
