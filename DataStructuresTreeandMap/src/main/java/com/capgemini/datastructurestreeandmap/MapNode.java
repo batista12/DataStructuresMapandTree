@@ -1,6 +1,12 @@
 package com.capgemini.datastructurestreeandmap;
-import datastructure.linkedlist.INode;
 
+
+/**
+ *
+ *
+ * @param <K>
+ * @param <V>
+ */
 public class MapNode<K extends Comparable<K>, V extends Comparable<V>> implements INode<K> {
 	K key;
 	V value;
